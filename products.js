@@ -53,7 +53,7 @@ const LENI_PRODUCTS = [
     status: "low-stock",
     badge: "limited",
     sizes: ["S", "M", "L"],
-    stripeLink: "https://buy.stripe.com/REPLACE_WITH_YOUR_LINK",
+    stripeLink: "https://buy.stripe.com/test_6oUfZhaf67ZZg1C4effjG02",
     image: null
   },
   {
@@ -65,7 +65,7 @@ const LENI_PRODUCTS = [
     status: "in-stock",
     badge: "new",
     sizes: ["XS", "S", "M", "L", "XL"],
-    stripeLink: "https://buy.stripe.com/REPLACE_WITH_YOUR_LINK",
+    stripeLink: "https://buy.stripe.com/test_6oUfZhaf67ZZg1C4effjG02",
     image: null
   },
   {
@@ -77,7 +77,7 @@ const LENI_PRODUCTS = [
     status: "in-stock",
     badge: null,
     sizes: ["S", "M", "L", "XL"],
-    stripeLink: "https://buy.stripe.com/REPLACE_WITH_YOUR_LINK",
+    stripeLink: "https://buy.stripe.com/test_6oUfZhaf67ZZg1C4effjG02",
     image: null
   },
   {
@@ -89,7 +89,7 @@ const LENI_PRODUCTS = [
     status: "in-stock",
     badge: null,
     sizes: ["S", "M", "L"],
-    stripeLink: "https://buy.stripe.com/REPLACE_WITH_YOUR_LINK",
+    stripeLink: "https://buy.stripe.com/test_6oUfZhaf67ZZg1C4effjG02",
     image: null
   }
 ];
