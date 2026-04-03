@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop — Leni</title>
+  <meta name="description" content="Shop in-stock Leni handmade shirts and shorts. Limited quantities available.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-body">
+
+  <!-- ── Navigation ── -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Leni<span></span></a>
+      <ul class="nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="preorder.html">Pre-order</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="preorder.html" class="btn btn--primary btn--sm nav__cta">Pre-order Now</a></li>
+      </ul>
+      <button class="nav__toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Page Hero ── -->
+  <div class="page-hero">
+    <div class="container">
+      <span class="section-label page-hero__label">Ready to ship</span>
+      <h1>Shop In-Stock</h1>
+      <p>All pieces are handmade and ready to dispatch within 3–5 working days.</p>
+    </div>
+  </div>
+
+  <!-- ── Products ── -->
+  <section class="section">
+    <div class="container">
+
+      <!-- Filter Bar -->
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All Pieces</button>
+        <button class="filter-btn" data-filter="shirts">Shirts</button>
+        <button class="filter-btn" data-filter="shorts">Shorts</button>
+      </div>
+
+      <!-- Grid -->
+      <div class="products-grid" id="shop-grid">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Pre-order prompt -->
+      <div style="
+        margin-top: 72px;
+        padding: 48px;
+        background: var(--bg-alt);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        text-align: center;
+      ">
+        <span class="section-label">Don't see what you want?</span>
+        <h2 style="margin-bottom:12px; font-size:1.6rem;">Request a Custom Pre-order</h2>
+        <p style="max-width:440px; margin:0 auto 28px; color:var(--text-light);">
+          We can make any piece to your size and specification.
+          Typical turnaround is 2–3 weeks from payment.
+        </p>
+        <a href="preorder.html" class="btn btn--primary">Place a Pre-order</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="nav__logo">Leni<span></span></a>
+          <p>Handmade shirts and shorts, made in small batches with natural materials.</p>
+        </div>
+        <div class="footer__col">
+          <h5>Shop</h5>
+          <a href="shop.html">All Products</a>
+          <a href="shop.html#shirts">Shirts</a>
+          <a href="shop.html#shorts">Shorts</a>
+          <a href="preorder.html">Pre-order</a>
+        </div>
+        <div class="footer__col">
+          <h5>Info</h5>
+          <a href="about.html">About</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="terms.html#returns">Returns</a>
+          <a href="terms.html#shipping">Shipping</a>
+        </div>
+        <div class="footer__col">
+          <h5>Contact</h5>
+          <a href="mailto:hello@leni.co.uk">hello@leni.co.uk</a>
+          <a href="https://instagram.com/leni" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span id="year"></span> Leni. All rights reserved.</span>
+        <span>Payments secured by <strong style="color:rgba(255,255,255,0.6)">Stripe</strong></span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="toast-msg"></span>
+  </div>
+
+  <script src="products.js"></script>
+  <script src="main.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    renderProducts(LENI_PRODUCTS, 'shop-grid');
+    initFilters(LENI_PRODUCTS, 'shop-grid');
+  </script>
+</body>
+</html>
