@@ -7,15 +7,15 @@
 
 /* ── Custom Properties ─────────────────────────────────────── */
 :root {
-  --bg:          #FAF9F6;
-  --bg-alt:      #F0EDE8;
+  --bg:          #FFFFFF;
+  --bg-alt:      #FEE6E2;
   --bg-card:     #FFFFFF;
-  --accent:      #C9B99A;
-  --accent-dark: #A8966A;
-  --text:        #1A1A1A;
-  --text-mid:    #4A4A4A;
-  --text-light:  #7A7A7A;
-  --border:      #E2DDD6;
+  --accent:      #FEE6E2;
+  --accent-dark: #EF233C;
+  --text:        #000000;
+  --text-mid:    #333333;
+  --text-light:  #666666;
+  --border:      #ECD9D6;
   --shadow:      0 2px 20px rgba(0,0,0,0.06);
   --shadow-hover:0 8px 40px rgba(0,0,0,0.10);
   --radius:      4px;
@@ -120,7 +120,7 @@ p  { color: var(--text-mid); }
   position: fixed;
   top: 0; left: 0; right: 0;
   height: var(--nav-h);
-  background: rgba(250,249,246,0.92);
+  background: rgba(255,255,255,0.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   z-index: 1000;
@@ -136,21 +136,13 @@ p  { color: var(--text-mid); }
   justify-content: space-between;
 }
 .nav__logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text);
+  display: flex;
+  align-items: center;
 }
-.nav__logo span {
-  display: inline-block;
-  width: 6px; height: 6px;
-  background: var(--accent);
-  border-radius: 50%;
-  margin-left: 4px;
-  vertical-align: middle;
-  transform: translateY(-3px);
+.nav__logo-svg {
+  height: 28px;
+  width: auto;
+  display: block;
 }
 .nav__links {
   display: flex;
@@ -212,7 +204,7 @@ p  { color: var(--text-mid); }
 .hero__bg {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(201,185,154,0.18) 0%, transparent 70%);
+  background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(254,230,226,0.5) 0%, transparent 70%);
   pointer-events: none;
 }
 .hero__content {
@@ -598,8 +590,8 @@ p  { color: var(--text-mid); }
 
 /* ── Footer ─────────────────────────────────────────────────── */
 .footer {
-  background: var(--text);
-  color: rgba(255,255,255,0.7);
+  background: #EF233C;
+  color: rgba(255,255,255,0.85);
   padding: 60px 0 32px;
 }
 .footer__grid {
@@ -608,7 +600,8 @@ p  { color: var(--text-mid); }
   gap: 40px;
   margin-bottom: 48px;
 }
-.footer__brand .nav__logo { color: #fff; font-size: 1.4rem; margin-bottom: 16px; display: inline-block; }
+.footer__brand .nav__logo { margin-bottom: 16px; display: inline-flex; }
+.footer__brand .nav__logo-svg { height: 26px; }
 .footer__brand p { font-size: 0.87rem; line-height: 1.8; max-width: 240px; }
 .footer__col h5 {
   font-family: inherit;
