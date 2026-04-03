@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pre-order — Leni</title>
+  <meta name="description" content="Reserve your Leni handmade piece. We'll make it to your specifications and dispatch within 2–3 weeks.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-body">
+
+  <!-- ── Navigation ── -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Leni<span></span></a>
+      <ul class="nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="preorder.html">Pre-order</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="preorder.html" class="btn btn--primary btn--sm nav__cta">Pre-order Now</a></li>
+      </ul>
+      <button class="nav__toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Page Hero ── -->
+  <div class="page-hero">
+    <div class="container">
+      <span class="section-label page-hero__label">Made to order</span>
+      <h1>Place a Pre-order</h1>
+      <p>Tell us what you'd like and we'll make it for you. Turnaround is typically 2–3 weeks.</p>
+    </div>
+  </div>
+
+  <!-- ── How it works ── -->
+  <section class="section section--alt" style="padding: 52px 0;">
+    <div class="container">
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:24px; text-align:center;">
+        <div>
+          <div style="
+            width:48px; height:48px; border-radius:50%;
+            background: var(--text); color:#fff;
+            font-family: 'Playfair Display', serif;
+            font-size:1.2rem; display:flex; align-items:center;
+            justify-content:center; margin:0 auto 16px;
+          ">1</div>
+          <h4 style="margin-bottom:6px;">Choose your piece</h4>
+          <p style="font-size:0.88rem; color:var(--text-light);">Select a product, size, and any notes for us.</p>
+        </div>
+        <div>
+          <div style="
+            width:48px; height:48px; border-radius:50%;
+            background: var(--text); color:#fff;
+            font-family: 'Playfair Display', serif;
+            font-size:1.2rem; display:flex; align-items:center;
+            justify-content:center; margin:0 auto 16px;
+          ">2</div>
+          <h4 style="margin-bottom:6px;">Pay securely</h4>
+          <p style="font-size:0.88rem; color:var(--text-light);">We'll redirect you to Stripe to complete payment safely.</p>
+        </div>
+        <div>
+          <div style="
+            width:48px; height:48px; border-radius:50%;
+            background: var(--text); color:#fff;
+            font-family: 'Playfair Display', serif;
+            font-size:1.2rem; display:flex; align-items:center;
+            justify-content:center; margin:0 auto 16px;
+          ">3</div>
+          <h4 style="margin-bottom:6px;">We get to work</h4>
+          <p style="font-size:0.88rem; color:var(--text-light);">Your piece is cut and sewn. We'll email when it ships.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Form ── -->
+  <section class="section">
+    <div class="container">
+      <div class="form-wrap">
+
+        <!-- Success state (shown after submit if Stripe link not configured) -->
+        <div class="success-msg" id="success-msg">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M22 4L12 14.01l-3-3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>Order Received!</h3>
+          <p style="color:var(--text-light);">
+            Thanks for your pre-order. We'll be in touch within 24 hours with confirmation
+            and payment details.
+          </p>
+          <a href="index.html" class="btn btn--outline" style="margin-top:24px;">Back to Home</a>
+        </div>
+
+        <!-- Pre-order form -->
+        <!-- ⚠️  Replace YOUR_FORMSPREE_ID with your form ID from formspree.io -->
+        <form
+          id="preorder-form"
+          data-formspree="https://formspree.io/f/xbdpaqpd"
+          novalidate
+        >
+          <!-- Contact details -->
+          <p class="form-section-title">Your Details</p>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="po-fname">First Name *</label>
+              <input type="text" id="po-fname" name="first_name" required placeholder="Jane">
+            </div>
+            <div class="form-group">
+              <label for="po-lname">Last Name *</label>
+              <input type="text" id="po-lname" name="last_name" required placeholder="Smith">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="po-email">Email Address *</label>
+            <input type="email" id="po-email" name="email" required placeholder="jane@example.com">
+            <p class="form-hint">We'll send your order confirmation here.</p>
+          </div>
+          <div class="form-group">
+            <label for="po-phone">Phone Number (optional)</label>
+            <input type="tel" id="po-phone" name="phone" placeholder="+44 7700 000000">
+          </div>
+
+          <hr class="form-divider">
+
+          <!-- Order details -->
+          <p class="form-section-title">Your Order</p>
+          <div class="form-group">
+            <label for="po-item">Product *</label>
+            <select id="po-item" name="product" required>
+              <!-- Populated by JS from products.js -->
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="po-size">Size *</label>
+              <select id="po-size" name="size" required>
+                <!-- Populated by JS based on product selection -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="po-qty">Quantity *</label>
+              <input type="number" id="po-qty" name="quantity" min="1" max="5" value="1" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="po-notes">Special Requests (optional)</label>
+            <textarea id="po-notes" name="notes" placeholder="e.g. prefer a looser fit, any alterations, fabric questions…"></textarea>
+          </div>
+
+          <hr class="form-divider">
+
+          <!-- Shipping address -->
+          <p class="form-section-title">Shipping Address</p>
+          <div class="form-group">
+            <label for="po-addr1">Address Line 1 *</label>
+            <input type="text" id="po-addr1" name="address_1" required placeholder="12 Example Street">
+          </div>
+          <div class="form-group">
+            <label for="po-addr2">Address Line 2</label>
+            <input type="text" id="po-addr2" name="address_2" placeholder="Flat 3">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="po-city">Town / City *</label>
+              <input type="text" id="po-city" name="city" required placeholder="London">
+            </div>
+            <div class="form-group">
+              <label for="po-postcode">Postcode *</label>
+              <input type="text" id="po-postcode" name="postcode" required placeholder="SW1A 1AA">
+            </div>
+          </div>
+
+          <hr class="form-divider">
+
+          <!-- Order Summary -->
+          <p class="form-section-title">Order Summary</p>
+          <div class="order-summary" id="order-summary-content">
+            <!-- Populated by JS -->
+          </div>
+          <p class="form-hint" style="margin-top:-12px; margin-bottom:24px;">
+            Shipping: Free on all UK orders. International shipping available on request.
+          </p>
+
+          <!-- Agreements -->
+          <div class="form-group">
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="terms" required>
+                I agree to the <a href="terms.html" target="_blank" style="color:var(--accent-dark); text-decoration:underline;">Terms &amp; Conditions</a>,
+                including the pre-order and returns policy. *
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="marketing">
+                I'd like to receive occasional updates from Leni (optional).
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--full" style="margin-top:8px;">
+            Continue to Payment →
+          </button>
+
+          <p class="stripe-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            Secure payment processed by Stripe. We never store your card details.
+          </p>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="nav__logo">Leni<span></span></a>
+          <p>Handmade shirts and shorts, made in small batches with natural materials.</p>
+        </div>
+        <div class="footer__col">
+          <h5>Shop</h5>
+          <a href="shop.html">All Products</a>
+          <a href="shop.html">Shirts</a>
+          <a href="shop.html">Shorts</a>
+          <a href="preorder.html">Pre-order</a>
+        </div>
+        <div class="footer__col">
+          <h5>Info</h5>
+          <a href="about.html">About</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="terms.html#returns">Returns</a>
+          <a href="terms.html#shipping">Shipping</a>
+        </div>
+        <div class="footer__col">
+          <h5>Contact</h5>
+          <a href="mailto:hello@leni.co.uk">hello@leni.co.uk</a>
+          <a href="https://instagram.com/leni" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span id="year"></span> Leni. All rights reserved.</span>
+        <span>Payments secured by <strong style="color:rgba(255,255,255,0.6)">Stripe</strong></span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="toast-msg"></span>
+  </div>
+
+  <script src="products.js"></script>
+  <script src="main.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
