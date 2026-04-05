@@ -41,26 +41,46 @@
   }
 })();
 
-/* ── Navigation ─────────────────────────────────────────────── */
+/* ── Navigation / Mobile Menu ────────────────────────────────── */
 (function () {
-  const toggle = document.querySelector('.nav__toggle');
-  const links  = document.querySelector('.nav__links');
-  if (toggle && links) {
-    toggle.addEventListener('click', () => {
-      toggle.classList.toggle('open');
-      links.classList.toggle('open');
-      document.body.style.overflow = links.classList.contains('open') ? 'hidden' : '';
-    });
-    links.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        toggle.classList.remove('open');
-        links.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-    });
+  const toggle     = document.querySelector('.nav__toggle');
+  const menu       = document.getElementById('mobile-menu');
+  const closeBtn   = document.getElementById('mobile-menu-close');
+
+  function openMenu() {
+    if (!menu) return;
+    menu.classList.add('open');
+    menu.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    if (toggle) toggle.setAttribute('aria-expanded', 'true');
   }
 
-  // Active link
+  function closeMenu() {
+    if (!menu) return;
+    menu.classList.remove('open');
+    menu.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (toggle) toggle.setAttribute('aria-expanded', 'false');
+  }
+
+  if (toggle) toggle.addEventListener('click', () => {
+    menu && menu.classList.contains('open') ? closeMenu() : openMenu();
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+
+  // Close when a menu link is tapped
+  if (menu) {
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  }
+
+  // Close on Escape key
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+  // Safety net: if page is unloaded while menu is open, ensure overflow is never stuck
+  window.addEventListener('pagehide', () => { document.body.style.overflow = ''; });
+
+  // Active link highlight on desktop nav (if visible)
   const path = location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav__links a').forEach(a => {
     const href = a.getAttribute('href');
