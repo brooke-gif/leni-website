@@ -7,6 +7,16 @@
   const bar     = document.getElementById('announcement-bar');
   const dismiss = document.getElementById('dismiss-bar');
   const nav     = document.querySelector('.nav');
+  const root    = document.documentElement;
+
+  // Always measure the real rendered height and sync the CSS variable.
+  // This fixes the nav/content gap that appears when the bar wraps to two
+  // lines on mobile (static CSS value ≠ actual height).
+  function syncBarHeight() {
+    if (!bar) return;
+    const h = bar.classList.contains('hidden') ? 0 : bar.getBoundingClientRect().height;
+    root.style.setProperty('--announce-h', Math.round(h) + 'px');
+  }
 
   if (!bar) return;
 
@@ -16,12 +26,17 @@
     document.body.classList.add('bar-hidden');
   }
 
+  // Sync on load and whenever the viewport resizes (orientation change etc.)
+  syncBarHeight();
+  window.addEventListener('resize', syncBarHeight);
+
   if (dismiss) {
     dismiss.addEventListener('click', () => {
       bar.classList.add('hidden');
       if (nav) nav.classList.add('bar-hidden');
       document.body.classList.add('bar-hidden');
       sessionStorage.setItem('bar-dismissed', '1');
+      syncBarHeight(); // update to 0 so nav slides to top instantly
     });
   }
 })();
