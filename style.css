@@ -185,6 +185,10 @@ p  { color: var(--text-mid); font-weight: 300; }
   background: var(--text);
   transition: var(--transition);
 }
+/* Toggle → X when menu open */
+.nav__toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav__toggle.open span:nth-child(2) { opacity: 0; }
+.nav__toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 body.bar-hidden .nav { top: 0; }
 
 /* ── Buttons ─────────────────────────────────────────────────── */
@@ -811,23 +815,57 @@ body.bar-hidden .nav { top: 0; }
 @media (max-width: 768px) {
   :root { --nav-h: 64px; }
   .container { padding: 0 20px; }
-  .nav__inner { padding: 0 20px; }
+
+  /* Logo on left, toggle on far right — no centering */
+  .nav__inner {
+    padding: 0 20px;
+    grid-template-columns: auto 1fr auto;
+  }
+
+  /* Full-screen Marni-style menu */
   .nav__links {
     display: none;
     position: fixed;
-    top: calc(var(--announce-h) + var(--nav-h));
-    left: 0; right: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
     background: #fff;
     flex-direction: column;
+    justify-content: center;
     gap: 0;
-    border-bottom: 1px solid var(--border-light);
-    z-index: 999;
+    z-index: 1002;
+    padding: 80px 40px 60px;
+    overflow-y: auto;
   }
   .nav__links.open { display: flex; }
-  .nav__links a { padding: 16px 24px; font-size: 0.8rem; }
-  .nav__logo-svg { height: 36px; }
+  .nav__links a {
+    padding: 20px 0;
+    font-size: 2rem;
+    font-weight: 200;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    color: var(--text);
+    border-bottom: 1px solid var(--border-light);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav__links a::before { display: none; }
+  .nav__links a::after {
+    content: '→';
+    font-size: 1.2rem;
+    font-weight: 200;
+    width: auto;
+    height: auto;
+    background: none;
+    position: static;
+    opacity: 0.35;
+  }
+  .nav__links a:hover::after { opacity: 1; width: auto; }
+
+  /* Mobile logo — 10% larger than before (36px → 40px) */
+  .nav__logo-svg { height: 40px; }
   .nav__cta { display: none; }
-  .nav__toggle { display: flex; }
+  .nav__toggle { display: flex; z-index: 1003; position: relative; }
   .hero__content { padding: 0 20px 56px; }
   .hero__title { font-size: clamp(2.2rem, 8vw, 3.5rem); }
   .products-grid { grid-template-columns: repeat(2, 1fr); gap: 1px; }
