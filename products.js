@@ -1,164 +1,107 @@
+/* LENI — Product catalogue
+   Replace Unsplash URLs with your own images when ready
+   -------------------------------------------------------- */
 const LENI_PRODUCTS = [
   {
-    id: 1,
-    name: "The Foundry Shirt",
-    category: "shirts",
-    price: 68,
-    stripeLink: "https://buy.stripe.com/test_3cI28r3QI3JJbLm8uvfjG00",
+    id: 'leni-shirt-001',
+    name: 'The Linen Shirt',
+    price: 95,
+    type: 'shirt',
+    status: 'in-stock',
+    sizes: ['XS','S','M','L','XL'],
+    image: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&h=800&fit=crop&q=80',
     images: [
-      "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=800&q=80",
-      "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=800&q=80",
-      "https://images.unsplash.com/photo-1594938298603-c8148c4b984b?w=800&q=80"
+      'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=900&h=1200&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=900&h=1200&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=900&h=1200&fit=crop&q=80'
     ],
-    description: "A considered shirt cut from deadstock linen, with a relaxed silhouette and dropped shoulder. Slightly oversized with a single chest pocket and pearlescent shell buttons. Hand-finished at our London studio. Each piece is entirely one of a kind.",
-    sourcing: {
-      material: "100% deadstock linen",
-      city: "Paris",
-      country: "France",
-      flag: "🇫🇷"
-    },
-    care: [
-      "Hand wash in cold water",
-      "Lay flat to dry away from direct sunlight",
-      "Cool iron on reverse if needed",
-      "Do not bleach or tumble dry"
-    ],
-    postage: "Free tracked delivery within the UK. Dispatched within 3–5 working days. International shipping available at checkout.",
-    oneOff: true
+    description: 'Cut from 100% stonewashed linen, this relaxed-fit shirt is designed to wear season after season. Each piece is hand-cut and sewn in our London studio.',
+    material: '100% stonewashed linen',
+    care: 'Machine wash cold, hang to dry'
   },
   {
-    id: 2,
-    name: "The Linen Tee",
-    category: "shirts",
-    price: 54,
-    stripeLink: "https://buy.stripe.com/test_14AdR99b2eon6r23abfjG01",
+    id: 'leni-shirt-002',
+    name: 'The Oversized Tee',
+    price: 65,
+    type: 'shirt',
+    status: 'in-stock',
+    sizes: ['XS','S','M','L','XL'],
+    image: 'https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=600&h=800&fit=crop&q=80',
     images: [
-      "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=800&q=80",
-      "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800&q=80",
-      "https://images.unsplash.com/photo-1527719327859-c6ce80353573?w=800&q=80"
+      'https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=900&h=1200&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900&h=1200&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=900&h=1200&fit=crop&q=80'
     ],
-    description: "A lightweight linen tee with a boxy, relaxed cut. The fabric is pre-washed for a lived-in softness from the first wear. Raw-edge hem and ribbed collar. Minimal and honest — made to be worn every day.",
-    sourcing: {
-      material: "100% pre-washed linen",
-      city: "Lisbon",
-      country: "Portugal",
-      flag: "🇵🇹"
-    },
-    care: [
-      "Machine wash at 30°C",
-      "Tumble dry low or lay flat",
-      "Warm iron",
-      "Do not bleach"
-    ],
-    postage: "Free tracked delivery within the UK. Dispatched within 3–5 working days. International shipping available at checkout.",
-    oneOff: true
+    description: 'Made from 200gsm organic cotton jersey. A generous boxy fit that works as well tucked in as it does loose.',
+    material: '100% GOTS certified organic cotton',
+    care: 'Machine wash 30°, reshape while damp'
   },
   {
-    id: 3,
-    name: "The Studio Shirt",
-    category: "shirts",
-    price: 78,
-    stripeLink: "https://buy.stripe.com/test_6oUfZhaf67ZZg1C4effjG02",
+    id: 'leni-shorts-001',
+    name: 'The Linen Shorts',
+    price: 85,
+    type: 'shorts',
+    status: 'in-stock',
+    sizes: ['XS','S','M','L','XL'],
+    image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&h=800&fit=crop&q=80',
     images: [
-      "https://images.unsplash.com/photo-1603252109303-2751441dd157?w=800&q=80",
-      "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&q=80",
-      "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=800&q=80"
+      'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=900&h=1200&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1532453288672-3a17ac36f5ec?w=900&h=1200&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=900&h=1200&fit=crop&q=80'
     ],
-    description: "An artist's shirt reimagined as everyday wear. Cut from a medium-weight cotton-linen blend with a generous fit, long tails, and a single button-through placket. The collar sits softly — structured without stiffness.",
-    sourcing: {
-      material: "Cotton-linen blend (55% cotton, 45% linen)",
-      city: "Milan",
-      country: "Italy",
-      flag: "🇮🇹"
-    },
-    care: [
-      "Hand wash or delicate machine cycle",
-      "Lay flat to dry",
-      "Cool iron while slightly damp",
-      "Do not bleach or dry clean"
-    ],
-    postage: "Free tracked delivery within the UK. Dispatched within 3–5 working days. International shipping available at checkout.",
-    oneOff: true
+    description: 'Wide-leg linen shorts with an elasticated waistband and two side pockets. Relaxed through the leg, hitting just above the knee.',
+    material: '100% washed linen',
+    care: 'Machine wash cold, hang to dry'
   },
   {
-    id: 4,
-    name: "The Drawstring Short",
-    category: "shorts",
-    price: 62,
-    stripeLink: "https://buy.stripe.com/test_6oUfZhaf67ZZg1C4effjG02",
+    id: 'leni-shirt-003',
+    name: 'The Stripe Shirt',
+    price: 110,
+    type: 'shirt',
+    status: 'preorder',
+    sizes: ['S','M','L'],
+    image: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=600&h=800&fit=crop&q=80',
     images: [
-      "https://images.unsplash.com/photo-1591195853828-11db59a44f43?w=800&q=80",
-      "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=800&q=80",
-      "https://images.unsplash.com/photo-1565084888279-aca607ecce0c?w=800&q=80"
+      'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=900&h=1200&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1502716119720-b23a93e5fe1b?w=900&h=1200&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=900&h=1200&fit=crop&q=80'
     ],
-    description: "Easy, unstructured shorts with a wide drawstring waistband. The silhouette falls just above the knee with a slight flare. Two side-seam pockets. Made to be dressed up or down.",
-    sourcing: {
-      material: "100% deadstock linen",
-      city: "Paris",
-      country: "France",
-      flag: "🇫🇷"
-    },
-    care: [
-      "Hand wash in cold water",
-      "Lay flat to dry",
-      "Cool iron on reverse",
-      "Do not bleach or tumble dry"
-    ],
-    postage: "Free tracked delivery within the UK. Dispatched within 3–5 working days. International shipping available at checkout.",
-    oneOff: true
+    description: 'A classic striped cotton shirt with a clean boxy cut. Two chest pockets, single button cuff.',
+    material: '100% organic cotton poplin',
+    care: 'Machine wash 40°, light press'
   },
   {
-    id: 5,
-    name: "The Linen Short",
-    category: "shorts",
-    price: 58,
-    stripeLink: "https://buy.stripe.com/test_6oUfZhaf67ZZg1C4effjG02",
+    id: 'leni-shorts-002',
+    name: 'The Cotton Shorts',
+    price: 75,
+    type: 'shorts',
+    status: 'in-stock',
+    sizes: ['XS','S','M','L','XL'],
+    image: 'https://images.unsplash.com/photo-1532453288672-3a17ac36f5ec?w=600&h=800&fit=crop&q=80',
     images: [
-      "https://images.unsplash.com/photo-1542272604-787c3835535d?w=800&q=80",
-      "https://images.unsplash.com/photo-1598554747436-c9293d6a588f?w=800&q=80",
-      "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=800&q=80"
+      'https://images.unsplash.com/photo-1532453288672-3a17ac36f5ec?w=900&h=1200&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=900&h=1200&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=900&h=1200&fit=crop&q=80'
     ],
-    description: "A wardrobe essential in the softest washed linen. A straight, tailored leg cut slightly shorter. Finished with a concealed side zip and a flat front. Minimal, precise, wearable.",
-    sourcing: {
-      material: "100% washed linen",
-      city: "Lisbon",
-      country: "Portugal",
-      flag: "🇵🇹"
-    },
-    care: [
-      "Machine wash at 30°C",
-      "Tumble dry low or hang dry",
-      "Warm iron",
-      "Do not bleach"
-    ],
-    postage: "Free tracked delivery within the UK. Dispatched within 3–5 working days. International shipping available at checkout.",
-    oneOff: true
+    description: 'Tailored cotton shorts in a mid-weight poplin. Straight leg with a mid-rise waist and flat-front finish.',
+    material: '100% organic cotton',
+    care: 'Machine wash 30°, hang or press lightly'
   },
   {
-    id: 6,
-    name: "The Cargo Short",
-    category: "shorts",
-    price: 72,
-    stripeLink: "https://buy.stripe.com/test_6oUfZhaf67ZZg1C4effjG02",
+    id: 'leni-shirt-004',
+    name: 'The Silk Blouse',
+    price: 145,
+    type: 'shirt',
+    status: 'preorder',
+    sizes: ['XS','S','M','L'],
+    image: 'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=600&h=800&fit=crop&q=80',
     images: [
-      "https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?w=800&q=80",
-      "https://images.unsplash.com/photo-1560243563-062bfc001d68?w=800&q=80",
-      "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=800&q=80"
+      'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=900&h=1200&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=900&h=1200&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=900&h=1200&fit=crop&q=80'
     ],
-    description: "A utility-inspired short with patch pockets at the hip and a relaxed, workwear silhouette. Cut from a sturdy cotton canvas in a natural ecru. Designed to age well — to gain character with every wear.",
-    sourcing: {
-      material: "100% organic cotton canvas",
-      city: "Barcelona",
-      country: "Spain",
-      flag: "🇪🇸"
-    },
-    care: [
-      "Machine wash at 40°C",
-      "Tumble dry medium",
-      "Iron at medium heat",
-      "Do not bleach"
-    ],
-    postage: "Free tracked delivery within the UK. Dispatched within 3–5 working days. International shipping available at checkout.",
-    oneOff: true
+    description: 'A fluid silk blouse with a relaxed V-neck and dropped shoulders. Slips over anything effortlessly.',
+    material: '100% mulberry silk',
+    care: 'Hand wash or dry clean recommended'
   }
 ];

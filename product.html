@@ -4,25 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product — Leni</title>
-  <meta name="description" content="Handmade clothing by Leni. Each piece is individually cut, sewn and finished by hand.">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="page-body">
-
-  <!-- ── Announcement Bar ── -->
+<body>
   <div class="announcement-bar" id="announcement-bar">
     <span>Handmade in small batches &middot; Free UK delivery over £80</span>
     <button class="announcement-bar__close" id="dismiss-bar" aria-label="Dismiss">×</button>
   </div>
-
-  <!-- ── Navigation ── -->
   <nav class="nav">
     <div class="nav__inner">
-      <a href="index.html" class="nav__logo">
-        <svg class="nav__logo-svg" viewBox="0 0 1141 574" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Leni">
-          <path d="M270.676 371.478V427.306H81.8473V167.46H147.527V371.478H270.676ZM361.098 427.306V167.46H554.032V220.825H426.778V270.085H537.202V323.45H426.778V373.941H554.032V427.306H361.098ZM385.728 90.6973V87.8239H446.482L488.352 151.041H435.809L385.728 90.6973ZM816.67 167.46H882.35V427.306H817.081L743.191 317.292C737.444 308.535 732.655 301.146 728.824 295.125C724.993 289.105 721.435 283.084 718.151 277.063C714.867 271.043 711.172 263.927 707.067 255.717L705.836 257.359C709.667 270.495 711.993 282.81 712.814 294.304C713.635 305.525 714.046 316.471 714.046 327.144V427.306H648.366V167.46H713.635L787.525 277.474C793.272 285.957 798.061 293.346 801.892 299.641C805.724 305.661 809.281 311.682 812.565 317.703C815.849 323.723 819.544 330.839 823.649 339.049L824.88 337.407C822.144 325.913 820.091 314.829 818.723 304.156C817.355 293.21 816.67 282.4 816.67 271.727V167.46ZM1059.04 427.306H993.361V167.46H1059.04V427.306Z" fill="#EF233C"/>
-        </svg>
-      </a>
+      <a href="index.html" class="nav__logo"><svg class="nav__logo-svg" viewBox="0 0 1141 574" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Leni"><path d="M270.676 371.478V427.306H81.8473V167.46H147.527V371.478H270.676ZM361.098 427.306V167.46H554.032V220.825H426.778V270.085H537.202V323.45H426.778V373.941H554.032V427.306H361.098ZM385.728 90.6973V87.8239H446.482L488.352 151.041H435.809L385.728 90.6973ZM816.67 167.46H882.35V427.306H817.081L743.191 317.292C737.444 308.535 732.655 301.146 728.824 295.125C724.993 289.105 721.435 283.084 718.151 277.063C714.867 271.043 711.172 263.927 707.067 255.717L705.836 257.359C709.667 270.495 711.993 282.81 712.814 294.304C713.635 305.525 714.046 316.471 714.046 327.144V427.306H648.366V167.46H713.635L787.525 277.474C793.272 285.957 798.061 293.346 801.892 299.641C805.724 305.661 809.281 311.682 812.565 317.703C815.849 323.723 819.544 330.839 823.649 339.049L824.88 337.407C822.144 325.913 820.091 314.829 818.723 304.156C817.355 293.21 816.67 282.4 816.67 271.727V167.46ZM1059.04 427.306H993.361V167.46H1059.04V427.306Z" fill="#EF233C"/></svg></a>
       <ul class="nav__links">
         <li><a href="shop.html">Shop</a></li>
         <li><a href="preorder.html">Pre-order</a></li>
@@ -30,205 +21,71 @@
       </ul>
       <div class="nav__actions">
         <a href="preorder.html" class="nav__cta">Pre-order</a>
-        <button class="nav__toggle" aria-label="Menu">
-          <span></span><span></span><span></span>
-        </button>
+        <button class="nav__toggle" aria-label="Menu"><span></span><span></span><span></span></button>
       </div>
     </div>
   </nav>
-
-  <!-- ── Breadcrumb ── -->
-  <div class="container">
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="index.html">Home</a>
-      <span class="breadcrumb__sep">/</span>
-      <a href="shop.html">Shop</a>
-      <span class="breadcrumb__sep">/</span>
-      <span class="breadcrumb__current" id="pdp-breadcrumb-name">Product</span>
-    </nav>
-  </div>
-
-  <!-- ── Product Detail ── -->
-  <div class="container" style="padding-bottom: 80px;">
-    <div class="pdp">
-
-      <!-- Gallery (left) -->
+  <div class="page-top">
+    <div class="pdp" id="pdp-root">
       <div class="pdp__gallery">
-        <div class="pdp__main-img" id="pdp-main-img">
-          <!-- Populated by JS -->
+        <div class="pdp__gallery-main" id="pdp-main-img">
+          <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=900&h=1200&fit=crop&q=80" id="pdp-main-src" alt="Product">
         </div>
-        <div class="pdp__thumbnails" id="pdp-thumbs">
-          <!-- Populated by JS -->
-        </div>
+        <div class="pdp__gallery-thumbs" id="pdp-thumbs"></div>
       </div>
-
-      <!-- Info (right) -->
-      <div class="pdp__info">
-
-        <div class="pdp__category" id="pdp-category">Category</div>
-        <h1 class="pdp__name" id="pdp-name">Product Name</h1>
-        <div class="pdp__price" id="pdp-price">£00</div>
-        <div id="pdp-status" class="pdp__status">In Stock</div>
-
-        <hr class="pdp__divider">
-
-        <p class="pdp__description" id="pdp-description">
-          Loading product details…
-        </p>
-
-        <!-- Accordion details -->
-        <div class="pdp__accordions">
-
-          <div class="pdp__accordion">
-            <button class="pdp__accordion-btn">
-              <span>Materials &amp; Fabric</span>
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 5v14M5 12h14" stroke-linecap="round"/>
-              </svg>
-            </button>
-            <div class="pdp__accordion-body">
-              <ul>
-                <li>100% organic cotton or linen-cotton blend</li>
-                <li>Sourced from certified sustainable mills in Portugal</li>
-                <li>Pre-washed for softness — minimal shrinkage after wear</li>
-                <li>GOTS certified where applicable</li>
-              </ul>
-            </div>
+      <div class="pdp__info" id="pdp-info">
+        <p class="pdp__brand">Leni</p>
+        <h1 class="pdp__name" id="pdp-name">Loading...</h1>
+        <p class="pdp__price" id="pdp-price"></p>
+        <div class="pdp__divider"></div>
+        <label class="pdp__label">Size</label>
+        <select class="pdp__select" id="pdp-size"><option>Select size</option></select>
+        <button class="pdp__buy" id="pdp-buy">Add to Bag</button>
+        <div class="pdp__accordion">
+          <div class="pdp__accordion-item">
+            <button class="pdp__accordion-trigger">Description <span class="pdp__accordion-icon">+</span></button>
+            <div class="pdp__accordion-body"><div class="pdp__accordion-content"><p id="pdp-desc"></p></div></div>
           </div>
-
-          <div class="pdp__accordion">
-            <button class="pdp__accordion-btn">
-              <span>Care Instructions</span>
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 5v14M5 12h14" stroke-linecap="round"/>
-              </svg>
-            </button>
-            <div class="pdp__accordion-body">
-              <ul>
-                <li>Machine wash cold, gentle cycle</li>
-                <li>Do not tumble dry — lay flat or hang to dry</li>
-                <li>Iron on low heat inside out</li>
-                <li>Do not bleach or dry clean</li>
-              </ul>
-            </div>
+          <div class="pdp__accordion-item">
+            <button class="pdp__accordion-trigger">Materials &amp; Care <span class="pdp__accordion-icon">+</span></button>
+            <div class="pdp__accordion-body"><div class="pdp__accordion-content">
+              <p id="pdp-material"></p><p id="pdp-care"></p>
+            </div></div>
           </div>
-
-          <div class="pdp__accordion">
-            <button class="pdp__accordion-btn">
-              <span>Shipping &amp; Returns</span>
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 5v14M5 12h14" stroke-linecap="round"/>
-              </svg>
-            </button>
-            <div class="pdp__accordion-body">
-              <ul>
-                <li>UK: 3–5 working days · Free over £80</li>
-                <li>Europe: 5–10 working days · £8</li>
-                <li>Rest of world: 7–14 working days · £14</li>
-                <li>Returns accepted within 14 days in original condition</li>
-                <li>Made-to-order pieces are non-refundable</li>
-              </ul>
-            </div>
+          <div class="pdp__accordion-item">
+            <button class="pdp__accordion-trigger">Delivery &amp; Returns <span class="pdp__accordion-icon">+</span></button>
+            <div class="pdp__accordion-body"><div class="pdp__accordion-content">
+              <p>Free UK delivery on orders over £80. Standard delivery 3–5 working days.</p>
+              <p>Returns accepted within 14 days. Items must be unworn and in original condition.</p>
+            </div></div>
           </div>
-
         </div>
-
-        <!-- CTA -->
-        <div class="pdp__cta">
-          <button class="pdp__buy" id="pdp-buy">Buy Now</button>
-          <div class="pdp__shipping-note">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 3h15v13H1zM16 8h4l3 3v5h-7V8z" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="5.5" cy="18.5" r="1.5"/><circle cx="18.5" cy="18.5" r="1.5"/>
-            </svg>
-            UK delivery 3–5 working days · Secured by Stripe
-          </div>
-          <div class="pdp__unique-note">One-of-a-kind piece · Handmade to order</div>
-        </div>
-
-        <!-- Back to shop -->
-        <div style="margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--border);">
-          <a href="shop.html" style="font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-light);display:inline-flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#000'" onmouseout="this.style.color='var(--text-light)'">
-            <svg viewBox="0 0 24 24" fill="none" style="width:14px;height:14px;stroke:currentColor;stroke-width:1.5">
-              <path d="M19 12H5M5 12l7-7M5 12l7 7" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Back to Shop
-          </a>
-        </div>
-
       </div>
     </div>
   </div>
-
-  <!-- ── You Might Also Like ── -->
-  <section style="border-top:1px solid var(--border);padding:64px 0;">
-    <div class="container">
-      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:36px;">
-        <h2 style="font-size:1.2rem;font-weight:400;font-family:'Playfair Display',serif;">You May Also Like</h2>
-        <a href="shop.html" style="font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-light);border-bottom:1px solid var(--border);padding-bottom:2px;">View All</a>
-      </div>
-      <div class="products-grid" id="related-grid"></div>
-    </div>
-  </section>
-
-  <!-- ── Footer ── -->
   <footer class="footer">
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">
-          <a href="index.html" class="nav__logo">
-            <svg class="nav__logo-svg" viewBox="0 0 1141 574" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Leni">
-              <path d="M270.676 371.478V427.306H81.8473V167.46H147.527V371.478H270.676ZM361.098 427.306V167.46H554.032V220.825H426.778V270.085H537.202V323.45H426.778V373.941H554.032V427.306H361.098ZM385.728 90.6973V87.8239H446.482L488.352 151.041H435.809L385.728 90.6973ZM816.67 167.46H882.35V427.306H817.081L743.191 317.292C737.444 308.535 732.655 301.146 728.824 295.125C724.993 289.105 721.435 283.084 718.151 277.063C714.867 271.043 711.172 263.927 707.067 255.717L705.836 257.359C709.667 270.495 711.993 282.81 712.814 294.304C713.635 305.525 714.046 316.471 714.046 327.144V427.306H648.366V167.46H713.635L787.525 277.474C793.272 285.957 798.061 293.346 801.892 299.641C805.724 305.661 809.281 311.682 812.565 317.703C815.849 323.723 819.544 330.839 823.649 339.049L824.88 337.407C822.144 325.913 820.091 314.829 818.723 304.156C817.355 293.21 816.67 282.4 816.67 271.727V167.46ZM1059.04 427.306H993.361V167.46H1059.04V427.306Z" fill="white"/>
-            </svg>
-          </a>
+          <a href="index.html"><svg class="nav__logo-svg" viewBox="0 0 1141 574" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Leni"><path d="M270.676 371.478V427.306H81.8473V167.46H147.527V371.478H270.676ZM361.098 427.306V167.46H554.032V220.825H426.778V270.085H537.202V323.45H426.778V373.941H554.032V427.306H361.098ZM385.728 90.6973V87.8239H446.482L488.352 151.041H435.809L385.728 90.6973ZM816.67 167.46H882.35V427.306H817.081L743.191 317.292C737.444 308.535 732.655 301.146 728.824 295.125C724.993 289.105 721.435 283.084 718.151 277.063C714.867 271.043 711.172 263.927 707.067 255.717L705.836 257.359C709.667 270.495 711.993 282.81 712.814 294.304C713.635 305.525 714.046 316.471 714.046 327.144V427.306H648.366V167.46H713.635L787.525 277.474C793.272 285.957 798.061 293.346 801.892 299.641C805.724 305.661 809.281 311.682 812.565 317.703C815.849 323.723 819.544 330.839 823.649 339.049L824.88 337.407C822.144 325.913 820.091 314.829 818.723 304.156C817.355 293.21 816.67 282.4 816.67 271.727V167.46ZM1059.04 427.306H993.361V167.46H1059.04V427.306Z" fill="white"/></svg></a>
           <p>Handmade shirts and shorts, made in small batches with natural materials.</p>
         </div>
-        <div class="footer__col">
-          <h5>Shop</h5>
-          <a href="shop.html">All Products</a>
-          <a href="shop.html">Shirts</a>
-          <a href="shop.html">Shorts</a>
-          <a href="preorder.html">Pre-order</a>
-        </div>
-        <div class="footer__col">
-          <h5>Info</h5>
-          <a href="about.html">About</a>
-          <a href="terms.html">Terms &amp; Conditions</a>
-          <a href="terms.html#returns">Returns</a>
-          <a href="terms.html#shipping">Shipping</a>
-        </div>
-        <div class="footer__col">
-          <h5>Contact</h5>
-          <a href="mailto:hello@leni.co.uk">hello@leni.co.uk</a>
-          <a href="https://instagram.com/leni" target="_blank" rel="noopener">Instagram</a>
-        </div>
+        <div class="footer__col"><h5>Shop</h5><a href="shop.html">All Products</a><a href="shop.html">Shirts</a><a href="shop.html">Shorts</a><a href="preorder.html">Pre-order</a></div>
+        <div class="footer__col"><h5>Info</h5><a href="about.html">About</a><a href="terms.html">Terms &amp; Conditions</a><a href="terms.html#returns">Returns</a><a href="terms.html#shipping">Shipping</a></div>
+        <div class="footer__col"><h5>Contact</h5><a href="mailto:hello@leni.co.uk">hello@leni.co.uk</a><a href="https://instagram.com/leni" target="_blank" rel="noopener">Instagram</a></div>
       </div>
       <div class="footer__bottom">
         <span>© <span id="year"></span> Leni. All rights reserved.</span>
-        <span>Payments secured by <strong style="color:rgba(255,255,255,0.5)">Stripe</strong></span>
+        <span>Payments secured by <strong style="color:rgba(255,255,255,0.4)">Stripe</strong></span>
       </div>
     </div>
   </footer>
-
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <div class="toast" id="toast">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
-      <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     <span class="toast-msg"></span>
   </div>
-
   <script src="products.js"></script>
   <script src="main.js"></script>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Load related products (all other products, up to 3)
-    if (typeof LENI_PRODUCTS !== 'undefined') {
-      const params = new URLSearchParams(location.search);
-      const currentId = parseInt(params.get('id'));
-      const related = LENI_PRODUCTS.filter(p => p.id !== currentId).slice(0, 3);
-      renderProducts(related, 'related-grid');
-    }
-  </script>
 </body>
 </html>
