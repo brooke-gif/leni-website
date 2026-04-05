@@ -64,8 +64,9 @@ function showToast(msg) {
 
 /* ── Product card renderer ───────────────────────────────────── */
 function createProductCard(p) {
-  const cardUrl = `product.html?id=${p.id}`;
-  const badge   = p.status === 'preorder'
+  const cardUrl   = `product.html?id=${p.id}`;
+  const stripeUrl = p.stripeUrl || cardUrl;
+  const badge     = p.status === 'preorder'
     ? `<span class="product-card__badge product-card__badge--preorder">Pre-order</span>`
     : '';
   const imgHtml = p.image
@@ -76,7 +77,7 @@ function createProductCard(p) {
     <div class="product-card__img">
       ${imgHtml}
       ${badge}
-      <button class="product-card__quick-add" onclick="event.stopPropagation();quickAdd('${p.id}')">Quick Add</button>
+      <a class="product-card__quick-add" href="${stripeUrl}" onclick="event.stopPropagation()" target="_blank" rel="noopener">Buy Now</a>
     </div>
     <div class="product-card__info">
       <div class="product-card__name">${p.name}</div>
@@ -85,11 +86,6 @@ function createProductCard(p) {
       </div>
     </div>
   </article>`;
-}
-
-function quickAdd(id) {
-  const p = (typeof LENI_PRODUCTS !== 'undefined') ? LENI_PRODUCTS.find(x => x.id === id) : null;
-  if (p) showToast(`${p.name} added to bag`);
 }
 
 /* ── Render products ─────────────────────────────────────────── */
@@ -123,13 +119,6 @@ function renderProducts(products, containerId, limit) {
   const careEl = document.getElementById('pdp-care');
   if (careEl) careEl.textContent = p.care ? `Care: ${p.care}` : '';
 
-  // Sizes
-  const sizeSelect = document.getElementById('pdp-size');
-  if (sizeSelect && p.sizes) {
-    sizeSelect.innerHTML = '<option value="">Select size</option>' +
-      p.sizes.map(s => `<option value="${s}">${s}</option>`).join('');
-  }
-
   // Gallery — use images array if available, else single image
   const imgs = p.images || (p.image ? [p.image] : []);
   const mainEl = document.getElementById('pdp-main-img');
@@ -151,16 +140,17 @@ function renderProducts(products, containerId, limit) {
     ).join('');
   }
 
-  // Buy button
+  // Buy button — links directly to Stripe payment URL
   const buyBtn = document.getElementById('pdp-buy');
   if (buyBtn) {
-    const label = p.status === 'preorder' ? 'Pre-order' : 'Add to Bag';
+    const label = p.status === 'preorder' ? 'Reserve This Piece' : 'Buy Now';
     buyBtn.textContent = label;
-    buyBtn.addEventListener('click', () => {
-      const size = sizeSelect ? sizeSelect.value : '';
-      if (sizeSelect && !size) { sizeSelect.style.borderColor = '#ef233c'; sizeSelect.focus(); return; }
-      showToast(`${p.name}${size ? ' — ' + size : ''} added`);
-    });
+    const url = p.stripeUrl || '#';
+    buyBtn.setAttribute('href', url);
+    if (url !== '#') {
+      buyBtn.setAttribute('target', '_blank');
+      buyBtn.setAttribute('rel', 'noopener');
+    }
   }
 
   // Accordions

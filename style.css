@@ -605,7 +605,15 @@ body.bar-hidden .nav { top: 0; }
   color: var(--text);
   margin-bottom: 28px;
 }
+.pdp__one-off {
+  font-size: 0.72rem;
+  color: var(--text-light);
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  margin-bottom: 24px;
+}
 .pdp__buy {
+  display: block;
   width: 100%;
   padding: 18px;
   background: var(--text);
@@ -619,8 +627,10 @@ body.bar-hidden .nav { top: 0; }
   transition: var(--transition);
   font-family: 'Jost', sans-serif;
   margin-bottom: 12px;
+  text-align: center;
+  text-decoration: none;
 }
-.pdp__buy:hover { background: var(--accent); }
+.pdp__buy:hover { background: var(--accent); color: #fff; }
 .pdp__accordion { border-top: 1px solid var(--border-light); margin-top: 36px; }
 .pdp__accordion-item { border-bottom: 1px solid var(--border-light); }
 .pdp__accordion-trigger {

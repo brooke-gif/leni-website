@@ -1,6 +1,7 @@
 /* LENI — Product catalogue
-   Replace Unsplash URLs with your own images when ready
-   -------------------------------------------------------- */
+   Replace Unsplash URLs with your own images when ready.
+   Replace stripeUrl values with your real Stripe Payment Links.
+   ---------------------------------------------------------------- */
 const LENI_PRODUCTS = [
   {
     id: 'leni-shirt-001',
@@ -8,7 +9,7 @@ const LENI_PRODUCTS = [
     price: 95,
     type: 'shirt',
     status: 'in-stock',
-    sizes: ['XS','S','M','L','XL'],
+    stripeUrl: 'https://buy.stripe.com/REPLACE_LINEN_SHIRT',
     image: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&h=800&fit=crop&q=80',
     images: [
       'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=900&h=1200&fit=crop&q=80',
@@ -25,7 +26,7 @@ const LENI_PRODUCTS = [
     price: 65,
     type: 'shirt',
     status: 'in-stock',
-    sizes: ['XS','S','M','L','XL'],
+    stripeUrl: 'https://buy.stripe.com/REPLACE_OVERSIZED_TEE',
     image: 'https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=600&h=800&fit=crop&q=80',
     images: [
       'https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=900&h=1200&fit=crop&q=80',
@@ -42,7 +43,7 @@ const LENI_PRODUCTS = [
     price: 85,
     type: 'shorts',
     status: 'in-stock',
-    sizes: ['XS','S','M','L','XL'],
+    stripeUrl: 'https://buy.stripe.com/REPLACE_LINEN_SHORTS',
     image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&h=800&fit=crop&q=80',
     images: [
       'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=900&h=1200&fit=crop&q=80',
@@ -59,7 +60,7 @@ const LENI_PRODUCTS = [
     price: 110,
     type: 'shirt',
     status: 'preorder',
-    sizes: ['S','M','L'],
+    stripeUrl: 'https://buy.stripe.com/REPLACE_STRIPE_SHIRT',
     image: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=600&h=800&fit=crop&q=80',
     images: [
       'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=900&h=1200&fit=crop&q=80',
@@ -76,7 +77,7 @@ const LENI_PRODUCTS = [
     price: 75,
     type: 'shorts',
     status: 'in-stock',
-    sizes: ['XS','S','M','L','XL'],
+    stripeUrl: 'https://buy.stripe.com/REPLACE_COTTON_SHORTS',
     image: 'https://images.unsplash.com/photo-1532453288672-3a17ac36f5ec?w=600&h=800&fit=crop&q=80',
     images: [
       'https://images.unsplash.com/photo-1532453288672-3a17ac36f5ec?w=900&h=1200&fit=crop&q=80',
@@ -93,7 +94,7 @@ const LENI_PRODUCTS = [
     price: 145,
     type: 'shirt',
     status: 'preorder',
-    sizes: ['XS','S','M','L'],
+    stripeUrl: 'https://buy.stripe.com/REPLACE_SILK_BLOUSE',
     image: 'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=600&h=800&fit=crop&q=80',
     images: [
       'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=900&h=1200&fit=crop&q=80',
