@@ -11,7 +11,7 @@
 
   <!-- Announcement Bar -->
   <div class="announcement-bar" id="announcement-bar">
-    <span>Handmade in small batches &middot; Free UK delivery over £80</span>
+    <span>Handmade in small batches<br>Free UK delivery over £80</span>
     <button class="announcement-bar__close" id="dismiss-bar" aria-label="Dismiss">×</button>
   </div>
 
@@ -37,37 +37,59 @@
     </div>
   </nav>
 
-  <!-- Hero — full-viewport editorial image -->
+  <!-- ── HERO — full viewport, text centred at bottom like Marni ── -->
   <section class="hero">
     <div class="hero__bg">
       <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&h=1000&fit=crop&q=80"
            alt="Leni editorial" loading="eager">
     </div>
     <div class="hero__overlay"></div>
-    <div class="hero__content">
-      <span class="hero__tag">Handmade in small batches</span>
-      <h1 class="hero__title">
-        Clothing made<br>
-        with intention.<br>
-        <em>Worn with ease.</em>
-      </h1>
-      <div class="hero__actions">
-        <a href="shop.html" class="btn btn--primary">Shop Now</a>
-        <a href="preorder.html" class="btn">Pre-order</a>
-      </div>
+    <div class="hero__content hero__content--center">
+      <span class="hero__tag">New in</span>
+      <h1 class="hero__title">Handmade<br><em>in small batches.</em></h1>
+      <a href="shop.html" class="hero__shop-link">Shop</a>
     </div>
   </section>
 
-  <!-- Editorial Intro — Marni-style centred text below hero -->
+  <!-- ── EDITORIAL INTRO — centred text below hero like Marni ── -->
   <div class="editorial-intro">
     <p>Each Leni piece is cut, sewn, and finished by hand using quality natural fabrics. We make limited runs of shirts and shorts designed to feel as good as they look.</p>
     <div class="editorial-intro__links">
-      <a href="shop.html">Shop Women</a>
-      <a href="shop.html">Shop Men</a>
+      <a href="shop.html">Shirts</a>
+      <a href="shop.html">Shorts</a>
+      <a href="preorder.html">Pre-order</a>
     </div>
   </div>
 
-  <!-- Features Strip -->
+  <!-- ── IN-STOCK PRODUCTS — minimal header, full-bleed grid ── -->
+  <section class="home-products">
+    <div class="home-products__header">
+      <span class="section-label">In stock now</span>
+    </div>
+    <div class="products-grid" id="featured-grid">
+      <!-- Populated by JS -->
+    </div>
+    <div class="home-products__footer">
+      <a href="shop.html" class="home-view-all">View all pieces</a>
+    </div>
+  </section>
+
+  <!-- ── EDITORIAL SPLIT — The Story ── -->
+  <div class="editorial-split">
+    <div class="editorial-split__img">
+      <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=900&h=1100&fit=crop&q=80"
+           alt="Leni studio" loading="lazy">
+    </div>
+    <div class="editorial-split__text">
+      <span class="section-label">The story</span>
+      <h2>Clothes made<br>to last.</h2>
+      <p>Leni started from a simple idea: make fewer things, but make them properly. Every piece is sewn by hand using quality natural fabrics.</p>
+      <p>We don't do mass production — we make what we need, when we need it.</p>
+      <a href="about.html" class="btn">Read More</a>
+    </div>
+  </div>
+
+  <!-- ── FEATURES STRIP ── -->
   <div class="features">
     <div class="container">
       <ul class="features__inner">
@@ -91,38 +113,7 @@
     </div>
   </div>
 
-  <!-- In-Stock Products -->
-  <section class="section">
-    <div class="container">
-      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:48px;">
-        <div>
-          <span class="section-label">Now available</span>
-          <h2 style="font-weight:200;">In-Stock Pieces</h2>
-        </div>
-        <a href="shop.html" style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:500;color:var(--text-light);border-bottom:1px solid var(--border);padding-bottom:2px;transition:color 0.2s;" onmouseover="this.style.color='#000'" onmouseout="this.style.color='var(--text-light)'">View All</a>
-      </div>
-      <div class="products-grid" id="featured-grid">
-        <!-- Populated by JS -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Editorial Split — The Story -->
-  <div class="editorial-split">
-    <div class="editorial-split__img">
-      <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=900&h=1100&fit=crop&q=80"
-           alt="Leni studio" loading="lazy">
-    </div>
-    <div class="editorial-split__text">
-      <span class="section-label">The story</span>
-      <h2>Clothes that are<br>made to last.</h2>
-      <p>Leni started from a simple idea: make fewer things, but make them properly. Every piece is sewn by hand using quality natural fabrics.</p>
-      <p>We don't do mass production — we make what we need, when we need it. When you order from Leni, you're getting something made specifically for you.</p>
-      <a href="about.html" class="btn">Read More</a>
-    </div>
-  </div>
-
-  <!-- Pre-order Banner -->
+  <!-- ── PRE-ORDER BANNER ── -->
   <div class="banner">
     <div class="banner__bg">
       <img src="https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=1600&h=600&fit=crop&q=80"
@@ -186,7 +177,7 @@
   <script src="main.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    renderProducts(LENI_PRODUCTS, 'featured-grid', 3);
+    renderProducts(LENI_PRODUCTS, 'featured-grid', 4);
   </script>
 </body>
 </html>
