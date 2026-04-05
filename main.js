@@ -49,6 +49,7 @@
 
   function openMenu() {
     if (!menu) return;
+    menu.classList.remove('closing');
     menu.classList.add('open');
     menu.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -56,11 +57,14 @@
   }
 
   function closeMenu() {
-    if (!menu) return;
-    menu.classList.remove('open');
+    if (!menu || !menu.classList.contains('open')) return;
+    menu.classList.add('closing');
     menu.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
     if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    setTimeout(() => {
+      menu.classList.remove('open', 'closing');
+    }, 420);
   }
 
   if (toggle) toggle.addEventListener('click', () => {

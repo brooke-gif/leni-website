@@ -1,5 +1,4 @@
 /* LENI — Product catalogue
-   Replace Unsplash URLs with your own images when ready.
    Replace stripeUrl values with your real Stripe Payment Links.
    ---------------------------------------------------------------- */
 const LENI_PRODUCTS = [
@@ -10,11 +9,11 @@ const LENI_PRODUCTS = [
     type: 'shirt',
     status: 'in-stock',
     stripeUrl: 'https://buy.stripe.com/REPLACE_LINEN_SHIRT',
-    image: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&h=800&fit=crop&q=80',
+    image: 'images/look-shirt-shorts-front.jpeg',
     images: [
-      'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=900&h=1200&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=900&h=1200&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=900&h=1200&fit=crop&q=80'
+      'images/look-shirt-shorts-front.jpeg',
+      'images/look-shirt-shorts-side.jpeg',
+      'images/look-shirt-shorts-alley.jpeg'
     ],
     description: 'Cut from 100% stonewashed linen, this relaxed-fit shirt is designed to wear season after season. Each piece is hand-cut and sewn in our London studio.',
     material: '100% stonewashed linen',
@@ -27,11 +26,11 @@ const LENI_PRODUCTS = [
     type: 'shirt',
     status: 'in-stock',
     stripeUrl: 'https://buy.stripe.com/REPLACE_OVERSIZED_TEE',
-    image: 'https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=600&h=800&fit=crop&q=80',
+    image: 'images/look-shirt-shorts-side.jpeg',
     images: [
-      'https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=900&h=1200&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900&h=1200&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=900&h=1200&fit=crop&q=80'
+      'images/look-shirt-shorts-side.jpeg',
+      'images/look-shirt-shorts-alley.jpeg',
+      'images/hero-colonnade.jpeg'
     ],
     description: 'Made from 200gsm organic cotton jersey. A generous boxy fit that works as well tucked in as it does loose.',
     material: '100% GOTS certified organic cotton',
@@ -44,11 +43,11 @@ const LENI_PRODUCTS = [
     type: 'shorts',
     status: 'in-stock',
     stripeUrl: 'https://buy.stripe.com/REPLACE_LINEN_SHORTS',
-    image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&h=800&fit=crop&q=80',
+    image: 'images/look-shirt-shorts-alley.jpeg',
     images: [
-      'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=900&h=1200&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1532453288672-3a17ac36f5ec?w=900&h=1200&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=900&h=1200&fit=crop&q=80'
+      'images/look-shirt-shorts-alley.jpeg',
+      'images/look-shirt-shorts-side.jpeg',
+      'images/look-shirt-shorts-front.jpeg'
     ],
     description: 'Wide-leg linen shorts with an elasticated waistband and two side pockets. Relaxed through the leg, hitting just above the knee.',
     material: '100% washed linen',
@@ -61,11 +60,11 @@ const LENI_PRODUCTS = [
     type: 'shirt',
     status: 'preorder',
     stripeUrl: 'https://buy.stripe.com/REPLACE_STRIPE_SHIRT',
-    image: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=600&h=800&fit=crop&q=80',
+    image: 'images/hero-colonnade.jpeg',
     images: [
-      'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=900&h=1200&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1502716119720-b23a93e5fe1b?w=900&h=1200&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=900&h=1200&fit=crop&q=80'
+      'images/hero-colonnade.jpeg',
+      'images/landscape-coastal.jpeg',
+      'images/landscape-vineyard-1.jpeg'
     ],
     description: 'A classic striped cotton shirt with a clean boxy cut. Two chest pockets, single button cuff.',
     material: '100% organic cotton poplin',
@@ -78,11 +77,11 @@ const LENI_PRODUCTS = [
     type: 'shorts',
     status: 'in-stock',
     stripeUrl: 'https://buy.stripe.com/REPLACE_COTTON_SHORTS',
-    image: 'https://images.unsplash.com/photo-1532453288672-3a17ac36f5ec?w=600&h=800&fit=crop&q=80',
+    image: 'images/look-shirt-shorts-front.jpeg',
     images: [
-      'https://images.unsplash.com/photo-1532453288672-3a17ac36f5ec?w=900&h=1200&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=900&h=1200&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=900&h=1200&fit=crop&q=80'
+      'images/look-shirt-shorts-front.jpeg',
+      'images/look-shirt-shorts-alley.jpeg',
+      'images/look-shirt-shorts-side.jpeg'
     ],
     description: 'Tailored cotton shorts in a mid-weight poplin. Straight leg with a mid-rise waist and flat-front finish.',
     material: '100% organic cotton',
@@ -95,11 +94,11 @@ const LENI_PRODUCTS = [
     type: 'shirt',
     status: 'preorder',
     stripeUrl: 'https://buy.stripe.com/REPLACE_SILK_BLOUSE',
-    image: 'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=600&h=800&fit=crop&q=80',
+    image: 'images/landscape-coastal.jpeg',
     images: [
-      'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=900&h=1200&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=900&h=1200&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=900&h=1200&fit=crop&q=80'
+      'images/landscape-coastal.jpeg',
+      'images/landscape-vineyard-2.jpeg',
+      'images/hero-colonnade.jpeg'
     ],
     description: 'A fluid silk blouse with a relaxed V-neck and dropped shoulders. Slips over anything effortlessly.',
     material: '100% mulberry silk',

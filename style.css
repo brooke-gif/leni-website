@@ -943,25 +943,29 @@ body.bar-hidden .nav { top: 0; }
    block. Slides in from the right exactly like Marni's menu.
    ──────────────────────────────────────────────────────────────── */
 .mobile-menu {
+  display: none;
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   background: #fff;
   z-index: 9000;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  /* start off-screen to the right */
-  transform: translateX(100%);
-  /* delay visibility:hidden until slide-out is done */
-  transition: transform 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              visibility 0s linear 0.42s;
-  visibility: hidden;
 }
 .mobile-menu.open {
-  transform: translateX(0);
-  /* make visible immediately on open */
-  transition: transform 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              visibility 0s linear 0s;
-  visibility: visible;
+  display: block;
+  animation: menuSlideIn 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+.mobile-menu.closing {
+  display: block;
+  animation: menuSlideOut 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+@keyframes menuSlideIn {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+@keyframes menuSlideOut {
+  from { transform: translateX(0); }
+  to   { transform: translateX(100%); }
 }
 
 /* X close button — top right, identical weight to nav toggle */
