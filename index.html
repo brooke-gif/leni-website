@@ -29,7 +29,6 @@
         <li><a href="about.html">About</a></li>
       </ul>
       <div class="nav__actions">
-        <a href="preorder.html" class="nav__cta">Pre-order</a>
         <button class="nav__toggle" aria-label="Menu">
           <span></span><span></span><span></span>
         </button>
@@ -76,69 +75,45 @@
     </div>
   </div>
 
-  <!-- ── IN-STOCK PRODUCTS — minimal header, full-bleed grid ── -->
-  <section class="home-products">
-    <div class="home-products__header">
-      <span class="section-label">In stock now</span>
+  <!-- ── 3-COLUMN EDITORIAL GRID — full bleed, like Marni ── -->
+  <div class="ed-grid">
+    <div class="ed-grid__item">
+      <a href="shop.html">
+        <img src="images/look-shirt-shorts-front.jpeg" alt="Shirts" loading="lazy">
+        <span class="ed-grid__label">Shirts</span>
+      </a>
     </div>
-    <div class="products-grid" id="featured-grid">
-      <!-- Populated by JS -->
+    <div class="ed-grid__item">
+      <a href="shop.html">
+        <img src="images/look-shirt-shorts-alley.jpeg" alt="Shorts" loading="lazy">
+        <span class="ed-grid__label">Shorts</span>
+      </a>
     </div>
-    <div class="home-products__footer">
-      <a href="shop.html" class="home-view-all">View all pieces</a>
-    </div>
-  </section>
-
-  <!-- ── EDITORIAL SPLIT — The Story ── -->
-  <div class="editorial-split">
-    <div class="editorial-split__img">
-      <img src="images/look-shirt-shorts-front.jpeg"
-           alt="Leni studio" loading="lazy">
-    </div>
-    <div class="editorial-split__text">
-      <span class="section-label">The story</span>
-      <h2>Clothes made<br>to last.</h2>
-      <p>Leni started from a simple idea: make fewer things, but make them properly. Every piece is sewn by hand using quality natural fabrics.</p>
-      <p>We don't do mass production — we make what we need, when we need it.</p>
-      <a href="about.html" class="btn">Read More</a>
+    <div class="ed-grid__item">
+      <a href="shop.html">
+        <img src="images/look-shirt-shorts-side.jpeg" alt="Pre-order" loading="lazy">
+        <span class="ed-grid__label">Pre-order</span>
+      </a>
     </div>
   </div>
 
-  <!-- ── FEATURES STRIP ── -->
-  <div class="features">
-    <div class="container">
-      <ul class="features__inner">
-        <li class="feature-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" stroke-linecap="round"/><path d="M12 6v6l4 2" stroke-linecap="round"/></svg>
-          Made to order
-        </li>
-        <li class="feature-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-linecap="round"/></svg>
-          Handmade with care
-        </li>
-        <li class="feature-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round"/></svg>
-          Organic materials
-        </li>
-        <li class="feature-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7V8z" stroke-linecap="round" stroke-linejoin="round"/><circle cx="5.5" cy="18.5" r="1.5"/><circle cx="18.5" cy="18.5" r="1.5"/></svg>
-          UK shipping
-        </li>
-      </ul>
+  <!-- ── 2-COLUMN EDITORIAL DUO — like Marni's shoes/bags section ── -->
+  <div class="ed-duo">
+    <div class="ed-duo__item">
+      <img src="images/hero-colonnade.jpeg" alt="The Collection" loading="lazy">
+      <div class="ed-duo__content">
+        <span class="ed-duo__tag">In stock now</span>
+        <h2 class="ed-duo__title">The<br>Collection</h2>
+        <a href="shop.html" class="ed-duo__link">Shop</a>
+      </div>
     </div>
-  </div>
-
-  <!-- ── PRE-ORDER BANNER ── -->
-  <div class="banner">
-    <div class="banner__bg">
-      <img src="images/landscape-coastal.jpeg"
-           alt="Pre-order" loading="lazy">
-    </div>
-    <div class="banner__content">
-      <span class="section-label">Can't find what you need?</span>
-      <h2>Reserve a Piece<br>Before It's Made</h2>
-      <p>Place a pre-order and we'll make your piece to your specifications. Turnaround is typically 2–3 weeks.</p>
-      <a href="preorder.html" class="btn">Start a Pre-order</a>
+    <div class="ed-duo__item">
+      <img src="images/landscape-coastal.jpeg" alt="Made to Order" loading="lazy">
+      <div class="ed-duo__content">
+        <span class="ed-duo__tag">Made to order</span>
+        <h2 class="ed-duo__title">Pre-order<br>a Piece</h2>
+        <a href="preorder.html" class="ed-duo__link">Pre-order</a>
+      </div>
     </div>
   </div>
 
@@ -192,7 +167,6 @@
   <script src="main.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    renderProducts(LENI_PRODUCTS, 'featured-grid', 4);
   </script>
 </body>
 </html>
