@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Leni — Handmade Clothing</title>
   <meta name="description" content="Leni makes handcrafted shirts and shorts in small batches. Shop in-stock pieces or place a pre-order.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="page-body">
@@ -117,54 +118,59 @@
     </div>
   </div>
 
-  <!-- ── EDITORIAL CAROUSEL — Marni-style scrolling image strip ── -->
-  <section class="ed-carousel">
-    <div class="ed-carousel__track" id="carouselTrack">
-      <div class="ed-carousel__item">
-        <a href="shop.html">
-          <img src="images/look-shirt-shorts-front.jpeg" alt="Shirts" loading="lazy">
-          <span class="ed-carousel__label">Shirts</span>
-        </a>
-      </div>
-      <div class="ed-carousel__item">
-        <a href="shop.html">
-          <img src="images/look-shirt-shorts-side.jpeg" alt="The Look" loading="lazy">
-          <span class="ed-carousel__label">The Look</span>
-        </a>
-      </div>
-      <div class="ed-carousel__item">
-        <a href="shop.html">
-          <img src="images/look-shirt-shorts-alley.jpeg" alt="Shorts" loading="lazy">
-          <span class="ed-carousel__label">Shorts</span>
-        </a>
-      </div>
-      <div class="ed-carousel__item">
-        <a href="preorder.html">
-          <img src="images/hero-colonnade.jpeg" alt="Collection" loading="lazy">
-          <span class="ed-carousel__label">Collection</span>
-        </a>
-      </div>
-      <div class="ed-carousel__item">
-        <a href="shop.html">
-          <img src="images/landscape-vineyard-1.jpeg" alt="Leni Studio" loading="lazy">
-          <span class="ed-carousel__label">Leni Studio</span>
-        </a>
-      </div>
-      <div class="ed-carousel__item">
-        <a href="shop.html">
-          <img src="images/landscape-vineyard-2.jpeg" alt="Summer 25" loading="lazy">
-          <span class="ed-carousel__label">Summer 25</span>
-        </a>
-      </div>
-      <div class="ed-carousel__item">
-        <a href="preorder.html">
-          <img src="images/landscape-coastal.jpeg" alt="Pre-order" loading="lazy">
-          <span class="ed-carousel__label">Pre-order</span>
-        </a>
-      </div>
+  <!-- ── FEATURE CAROUSEL — Marni-style centred swiper ── -->
+  <section class="feature-carousel">
+    <div class="feature-carousel__header">
+      <span class="feature-carousel__heading">The World of Leni</span>
     </div>
-    <button class="ed-carousel__btn ed-carousel__btn--prev" id="carouselPrev" aria-label="Previous">&#8592;</button>
-    <button class="ed-carousel__btn ed-carousel__btn--next" id="carouselNext" aria-label="Next">&#8594;</button>
+    <div class="swiper feature-carousel__swiper" id="featureCarousel">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide feature-carousel__slide">
+          <a href="shop.html">
+            <img src="images/look-shirt-shorts-front.jpeg" alt="Shirts" loading="lazy">
+            <div class="feature-carousel__text"><span class="feature-carousel__title">Shirts</span></div>
+          </a>
+        </div>
+        <div class="swiper-slide feature-carousel__slide">
+          <a href="shop.html">
+            <img src="images/look-shirt-shorts-side.jpeg" alt="The Look" loading="lazy">
+            <div class="feature-carousel__text"><span class="feature-carousel__title">The Look</span></div>
+          </a>
+        </div>
+        <div class="swiper-slide feature-carousel__slide">
+          <a href="shop.html">
+            <img src="images/look-shirt-shorts-alley.jpeg" alt="Shorts" loading="lazy">
+            <div class="feature-carousel__text"><span class="feature-carousel__title">Shorts</span></div>
+          </a>
+        </div>
+        <div class="swiper-slide feature-carousel__slide">
+          <a href="preorder.html">
+            <img src="images/hero-colonnade.jpeg" alt="Collection" loading="lazy">
+            <div class="feature-carousel__text"><span class="feature-carousel__title">Collection</span></div>
+          </a>
+        </div>
+        <div class="swiper-slide feature-carousel__slide">
+          <a href="shop.html">
+            <img src="images/landscape-vineyard-1.jpeg" alt="Leni Studio" loading="lazy">
+            <div class="feature-carousel__text"><span class="feature-carousel__title">Leni Studio</span></div>
+          </a>
+        </div>
+        <div class="swiper-slide feature-carousel__slide">
+          <a href="shop.html">
+            <img src="images/landscape-vineyard-2.jpeg" alt="Summer 25" loading="lazy">
+            <div class="feature-carousel__text"><span class="feature-carousel__title">Summer 25</span></div>
+          </a>
+        </div>
+        <div class="swiper-slide feature-carousel__slide">
+          <a href="preorder.html">
+            <img src="images/landscape-coastal.jpeg" alt="Pre-order" loading="lazy">
+            <div class="feature-carousel__text"><span class="feature-carousel__title">Pre-order</span></div>
+          </a>
+        </div>
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
   </section>
 
   <!-- Footer -->
@@ -214,6 +220,7 @@
   </div>
 
   <script src="products.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="main.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();

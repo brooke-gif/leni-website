@@ -242,34 +242,29 @@ function handlePreorder(e) {
   }, 1400);
 }
 
-/* ── Editorial Carousel ─────────────────────────────────────── */
+/* ── Feature Carousel (Swiper) ───────────────────────────────── */
 (function () {
-  const track   = document.getElementById("carouselTrack");
-  const prevBtn = document.getElementById("carouselPrev");
-  const nextBtn = document.getElementById("carouselNext");
-  if (!track || !prevBtn || !nextBtn) return;
-
-  function scrollAmount() {
-    return track.clientWidth * 0.75;
-  }
-
-  prevBtn.addEventListener("click", function () {
-    track.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+  if (typeof Swiper === 'undefined') return;
+  new Swiper('#featureCarousel', {
+    slidesPerView: 1.4,
+    centeredSlides: true,
+    loop: true,
+    spaceBetween: 8,
+    navigation: {
+      prevEl: '#featureCarousel .swiper-button-prev',
+      nextEl: '#featureCarousel .swiper-button-next',
+    },
+    breakpoints: {
+      0: {
+        slidesPerView: 1.15,
+        spaceBetween: 8,
+        centeredSlides: true,
+      },
+      768: {
+        slidesPerView: 1.4,
+        spaceBetween: 8,
+        centeredSlides: true,
+      }
+    }
   });
-
-  nextBtn.addEventListener("click", function () {
-    track.scrollBy({ left: scrollAmount(), behavior: "smooth" });
-  });
-
-  // Hide prev/next at scroll limits
-  function updateBtns() {
-    prevBtn.style.opacity = track.scrollLeft <= 0 ? "0.3" : "1";
-    prevBtn.style.pointerEvents = track.scrollLeft <= 0 ? "none" : "auto";
-    const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
-    nextBtn.style.opacity = atEnd ? "0.3" : "1";
-    nextBtn.style.pointerEvents = atEnd ? "none" : "auto";
-  }
-
-  track.addEventListener("scroll", updateBtns, { passive: true });
-  updateBtns();
 }());
