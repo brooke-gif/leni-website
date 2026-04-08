@@ -21,10 +21,11 @@ const LENI_CART = (function () {
     const items = load();
     const existing = items.find(i => i.id === product.id);
     if (existing) {
-      existing.quantity += 1;
-    } else {
-      items.push({ ...product, quantity: 1 });
+      // One-off pieces — only one per customer, just open the drawer
+      openDrawer();
+      return;
     }
+    items.push({ ...product, quantity: 1 });
     save(items);
     updateUI();
     dispatchChange();
@@ -132,11 +133,7 @@ const LENI_CART = (function () {
         <div class="cart-item__info">
           <span class="cart-item__name">${item.name}</span>
           <span class="cart-item__price">£${item.price.toFixed(2)}</span>
-          <div class="cart-item__qty">
-            <button onclick="LENI_CART.setQty('${item.id}', ${item.quantity - 1})" aria-label="Decrease">−</button>
-            <span>${item.quantity}</span>
-            <button onclick="LENI_CART.setQty('${item.id}', ${item.quantity + 1})" aria-label="Increase">+</button>
-          </div>
+          <span class="cart-item__one-off">One-of-a-kind piece</span>
         </div>
         <button class="cart-item__remove" onclick="LENI_CART.remove('${item.id}')" aria-label="Remove">×</button>
       </div>
@@ -172,21 +169,31 @@ const LENI_CART = (function () {
             name: i.name,
             price: i.price,
             quantity: i.quantity,
-            image: i.image ? window.location.origin + '/' + i.image : null,
           })),
         }),
       });
 
+      // Check the response is actually JSON before parsing
+      const contentType = res.headers.get('content-type') || '';
+      if (!contentType.includes('application/json')) {
+        throw new Error(`Server returned ${res.status} — make sure the site is deployed on Netlify and STRIPE_SECRET_KEY is set in environment variables.`);
+      }
+
       const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || `Server error ${res.status}`);
+      }
+
       if (data.url) {
         window.location.href = data.url;
       } else {
-        throw new Error(data.error || 'Unknown error');
+        throw new Error('No checkout URL returned from server.');
       }
     } catch (err) {
-      console.error(err);
+      console.error('Checkout error:', err.message);
       if (btn) { btn.textContent = 'Checkout'; btn.disabled = false; }
-      alert('Something went wrong. Please try again.');
+      alert('Checkout failed: ' + err.message);
     }
   }
 
@@ -204,8 +211,11 @@ const LENI_CART = (function () {
       drawer.className = 'cart-drawer';
       drawer.innerHTML = `
         <div class="cart-drawer__header">
-          <span class="cart-drawer__title">Your Cart</span>
-          <button class="cart-drawer__close" id="cart-drawer-close" aria-label="Close cart">×</button>
+          <button class="cart-drawer__back" id="cart-drawer-close" aria-label="Close cart">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            Continue shopping
+          </button>
+          <span class="cart-drawer__title">Cart</span>
         </div>
         <div class="cart-drawer__body" id="cart-drawer-body"></div>
         <div class="cart-drawer__footer" id="cart-drawer-footer"></div>
