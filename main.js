@@ -103,20 +103,20 @@ function showToast(msg) {
 
 /* ── Product card renderer ───────────────────────────────────── */
 function createProductCard(p) {
-  const cardUrl   = `product.html?id=${p.id}`;
-  const stripeUrl = p.stripeUrl || cardUrl;
-  const badge     = p.status === 'preorder'
+  const cardUrl = `product.html?id=${p.id}`;
+  const badge   = p.status === 'preorder'
     ? `<span class="product-card__badge product-card__badge--preorder">Pre-order</span>`
     : '';
   const imgHtml = p.image
     ? `<img src="${p.image}" alt="${p.name}" loading="lazy">`
     : `<div class="product-card__placeholder"><svg viewBox="0 0 24 24" fill="none" stroke-width="1"><rect x="3" y="3" width="18" height="18"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>`;
+  const productJson = JSON.stringify(p).replace(/"/g, '&quot;');
 
   return `<article class="product-card" onclick="location.href='${cardUrl}'" role="link" tabindex="0">
     <div class="product-card__img">
       ${imgHtml}
       ${badge}
-      <a class="product-card__quick-add" href="${stripeUrl}" onclick="event.stopPropagation()" target="_blank" rel="noopener">Buy Now</a>
+      <button class="product-card__quick-add" onclick="event.stopPropagation(); LENI_CART.add(${productJson})">Add to Cart</button>
     </div>
     <div class="product-card__info">
       <div class="product-card__name">${p.name}</div>
@@ -179,17 +179,14 @@ function renderProducts(products, containerId, limit) {
     ).join('');
   }
 
-  // Buy button — links directly to Stripe payment URL
+  // Add to Cart button on PDP
   const buyBtn = document.getElementById('pdp-buy');
   if (buyBtn) {
-    const label = p.status === 'preorder' ? 'Reserve This Piece' : 'Buy Now';
+    const label = p.status === 'preorder' ? 'Reserve This Piece' : 'Add to Cart';
     buyBtn.textContent = label;
-    const url = p.stripeUrl || '#';
-    buyBtn.setAttribute('href', url);
-    if (url !== '#') {
-      buyBtn.setAttribute('target', '_blank');
-      buyBtn.setAttribute('rel', 'noopener');
-    }
+    buyBtn.removeAttribute('href');
+    buyBtn.setAttribute('type', 'button');
+    buyBtn.addEventListener('click', () => LENI_CART.add(p));
   }
 
   // Accordions
