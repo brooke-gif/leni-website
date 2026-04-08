@@ -486,6 +486,7 @@ body.bar-hidden .nav { top: 0; }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 4px;
+  padding: 4px;
   height: 82vh;
   min-height: 480px;
   background: #fff; /* shows as gap colour */
@@ -536,6 +537,7 @@ body.bar-hidden .nav { top: 0; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4px;
+  padding: 4px;
   height: 90vh;
   min-height: 500px;
   background: #fff;
