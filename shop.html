@@ -79,16 +79,26 @@
   <script src="products.js"></script>
   <script src="main.js"></script>
   <script>
-    renderProducts(LENI_PRODUCTS, 'shop-grid');
     function filterProducts(filter, btn) {
       document.querySelectorAll('.shop-filters__inner button').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+      if (btn) btn.classList.add('active');
       const filtered = filter === 'all' ? LENI_PRODUCTS
         : filter === 'in-stock' ? LENI_PRODUCTS.filter(p => p.status === 'in-stock')
         : filter === 'preorder' ? LENI_PRODUCTS.filter(p => p.status === 'preorder')
         : LENI_PRODUCTS.filter(p => p.type === filter);
       renderProducts(filtered, 'shop-grid');
     }
+
+    // Apply filter from URL param e.g. shop.html?filter=shirt
+    (function () {
+      const param = new URLSearchParams(window.location.search).get('filter');
+      if (param && param !== 'all') {
+        const btn = document.querySelector(`.shop-filters__inner button[onclick*="'${param}'"]`);
+        filterProducts(param, btn);
+      } else {
+        renderProducts(LENI_PRODUCTS, 'shop-grid');
+      }
+    }());
   </script>
 </body>
 </html>
