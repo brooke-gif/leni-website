@@ -92,7 +92,6 @@ const LENI_CART = (function () {
     const overlay = document.getElementById('cart-overlay');
     if (drawer) drawer.classList.add('open');
     if (overlay) overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
   }
 
   function closeDrawer() {
@@ -100,7 +99,6 @@ const LENI_CART = (function () {
     const overlay = document.getElementById('cart-overlay');
     if (drawer) drawer.classList.remove('open');
     if (overlay) overlay.classList.remove('open');
-    document.body.style.overflow = '';
   }
 
   function showAddedToast(name) {
@@ -211,11 +209,10 @@ const LENI_CART = (function () {
       drawer.className = 'cart-drawer';
       drawer.innerHTML = `
         <div class="cart-drawer__header">
-          <button class="cart-drawer__back" id="cart-drawer-close" aria-label="Close cart">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-            Continue shopping
+          <span class="cart-drawer__title">Your Cart</span>
+          <button class="cart-drawer__close" id="cart-drawer-close" aria-label="Close cart">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
           </button>
-          <span class="cart-drawer__title">Cart</span>
         </div>
         <div class="cart-drawer__body" id="cart-drawer-body"></div>
         <div class="cart-drawer__footer" id="cart-drawer-footer"></div>
