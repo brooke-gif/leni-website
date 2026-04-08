@@ -101,22 +101,68 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 3200);
 }
 
+/* ── Sold inventory (fetched once from Netlify function) ─────── */
+window.LENI_SOLD = new Set();
+(function fetchInventory() {
+  fetch('/.netlify/functions/get-inventory')
+    .then(r => r.ok ? r.json() : { sold: [] })
+    .then(data => {
+      (data.sold || []).forEach(id => LENI_SOLD.add(id));
+      updateAllCardButtons();
+    })
+    .catch(() => {}); // silently ignore (e.g. on GitHub Pages)
+}());
+
+/* ── Update all visible Add to Cart / In Cart / Sold buttons ─── */
+function updateAllCardButtons() {
+  document.querySelectorAll('.product-card__quick-add[data-product-id]').forEach(btn => {
+    const id = btn.getAttribute('data-product-id');
+    if (LENI_SOLD.has(id)) {
+      btn.textContent = 'Sold';
+      btn.disabled = true;
+      btn.classList.add('is-sold');
+      btn.classList.remove('is-in-cart');
+    } else if (typeof LENI_CART !== 'undefined' && LENI_CART.isInCart(id)) {
+      btn.textContent = 'Added to Cart';
+      btn.classList.add('is-in-cart');
+      btn.classList.remove('is-sold');
+      btn.disabled = false;
+    } else {
+      btn.textContent = 'Add to Cart';
+      btn.classList.remove('is-in-cart', 'is-sold');
+      btn.disabled = false;
+    }
+  });
+}
+document.addEventListener('leni:cartchange', updateAllCardButtons);
+
 /* ── Product card renderer ───────────────────────────────────── */
 function createProductCard(p) {
   const cardUrl = `product.html?id=${p.id}`;
-  const badge   = p.status === 'preorder'
-    ? `<span class="product-card__badge product-card__badge--preorder">Pre-order</span>`
-    : '';
+  const isSold  = LENI_SOLD.has(p.id);
+  const inCart  = typeof LENI_CART !== 'undefined' && LENI_CART.isInCart(p.id);
+
+  const badge = isSold
+    ? `<span class="product-card__badge product-card__badge--sold">Sold</span>`
+    : p.status === 'preorder'
+      ? `<span class="product-card__badge product-card__badge--preorder">Pre-order</span>`
+      : '';
+
   const imgHtml = p.image
     ? `<img src="${p.image}" alt="${p.name}" loading="lazy">`
     : `<div class="product-card__placeholder"><svg viewBox="0 0 24 24" fill="none" stroke-width="1"><rect x="3" y="3" width="18" height="18"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>`;
+
   const productJson = JSON.stringify(p).replace(/"/g, '&quot;');
+  const btnLabel = isSold ? 'Sold' : inCart ? 'Added to Cart' : 'Add to Cart';
+  const btnClass = `product-card__quick-add${isSold ? ' is-sold' : inCart ? ' is-in-cart' : ''}`;
+  const btnDisabled = isSold ? 'disabled' : '';
+  const btnClick = isSold ? '' : `onclick="event.stopPropagation(); LENI_CART.add(${productJson})"`;
 
   return `<article class="product-card" onclick="location.href='${cardUrl}'" role="link" tabindex="0">
     <div class="product-card__img">
       ${imgHtml}
       ${badge}
-      <button class="product-card__quick-add" onclick="event.stopPropagation(); LENI_CART.add(${productJson})">Add to Cart</button>
+      <button class="${btnClass}" data-product-id="${p.id}" ${btnClick} ${btnDisabled}>${btnLabel}</button>
     </div>
     <div class="product-card__info">
       <div class="product-card__name">${p.name}</div>
@@ -179,14 +225,30 @@ function renderProducts(products, containerId, limit) {
     ).join('');
   }
 
-  // Add to Cart button on PDP
+  // Add to Cart / Sold button on PDP
   const buyBtn = document.getElementById('pdp-buy');
   if (buyBtn) {
-    const label = p.status === 'preorder' ? 'Reserve This Piece' : 'Add to Cart';
-    buyBtn.textContent = label;
     buyBtn.removeAttribute('href');
     buyBtn.setAttribute('type', 'button');
-    buyBtn.addEventListener('click', () => LENI_CART.add(p));
+
+    function updatePdpBtn() {
+      if (LENI_SOLD.has(p.id)) {
+        buyBtn.textContent = 'Sold';
+        buyBtn.disabled = true;
+      } else if (LENI_CART.isInCart(p.id)) {
+        buyBtn.textContent = 'Added to Cart';
+        buyBtn.disabled = false;
+      } else {
+        buyBtn.textContent = p.status === 'preorder' ? 'Reserve This Piece' : 'Add to Cart';
+        buyBtn.disabled = false;
+      }
+    }
+
+    buyBtn.addEventListener('click', () => {
+      if (!LENI_SOLD.has(p.id)) LENI_CART.add(p);
+    });
+    document.addEventListener('leni:cartchange', updatePdpBtn);
+    updatePdpBtn();
   }
 
   // Accordions

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Leni Studio website",
   "dependencies": {
-    "stripe": "^14.0.0"
+    "stripe": "^14.0.0",
+    "@netlify/blobs": "^7.0.0"
   }
 }

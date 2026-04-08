@@ -27,6 +27,7 @@ const LENI_CART = (function () {
     }
     save(items);
     updateUI();
+    dispatchChange();
     openDrawer();
     showAddedToast(product.name);
   }
@@ -34,6 +35,7 @@ const LENI_CART = (function () {
   function remove(productId) {
     save(load().filter(i => i.id !== productId));
     updateUI();
+    dispatchChange();
   }
 
   function setQty(productId, qty) {
@@ -44,11 +46,17 @@ const LENI_CART = (function () {
     item.quantity = qty;
     save(items);
     updateUI();
+    dispatchChange();
   }
 
   function clear() {
     save([]);
     updateUI();
+    dispatchChange();
+  }
+
+  function isInCart(productId) {
+    return load().some(i => i.id === productId);
   }
 
   /* ── Totals ──────────────────────────────────────────────────── */
@@ -57,6 +65,11 @@ const LENI_CART = (function () {
   }
   function count() {
     return load().reduce((sum, i) => sum + i.quantity, 0);
+  }
+
+  /* ── Cart change event (so product cards can update) ─────────── */
+  function dispatchChange() {
+    document.dispatchEvent(new CustomEvent('leni:cartchange'));
   }
 
   /* ── UI Helpers ──────────────────────────────────────────────── */
@@ -214,5 +227,5 @@ const LENI_CART = (function () {
 
   document.addEventListener('DOMContentLoaded', init);
 
-  return { add, remove, setQty, clear, count, total, openDrawer, closeDrawer };
+  return { add, remove, setQty, clear, count, total, isInCart, openDrawer, closeDrawer };
 }());

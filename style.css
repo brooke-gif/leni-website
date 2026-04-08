@@ -361,6 +361,28 @@ body.bar-hidden .nav { top: 0; }
   font-family: 'Jost', sans-serif;
 }
 .product-card:hover .product-card__quick-add { transform: translateY(0); }
+.product-card__quick-add.is-in-cart {
+  transform: translateY(0);
+  background: var(--text);
+  color: #fff;
+}
+.product-card__quick-add.is-sold {
+  transform: translateY(0);
+  background: rgba(200,200,200,0.95);
+  color: #999;
+  cursor: default;
+}
+.product-card__badge--sold {
+  position: absolute;
+  top: 16px; left: 16px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  font-weight: 500;
+}
 .product-card__info { padding: 14px 14px 12px; }
 .product-card__name {
   font-size: 0.78rem;
