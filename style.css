@@ -485,8 +485,8 @@ body.bar-hidden .nav { top: 0; }
 .ed-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 4px;
-  padding: 4px;
+  gap: 5px;
+  padding: 5px 5px 0 5px; /* no bottom — ed-duo's top padding provides the gap between sections */
   height: 82vh;
   min-height: 480px;
   background: #fff; /* shows as gap colour */
@@ -536,8 +536,8 @@ body.bar-hidden .nav { top: 0; }
 .ed-duo {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4px;
-  padding: 4px;
+  gap: 5px;
+  padding: 5px;
   height: 90vh;
   min-height: 500px;
   background: #fff;
@@ -1026,12 +1026,12 @@ body.bar-hidden .nav { top: 0; }
   .editorial-split__text { padding: 48px 32px; }
 
   /* Editorial grid — stack vertically on mobile */
-  .ed-grid { grid-template-columns: 1fr; height: auto; gap: 4px; }
+  .ed-grid { grid-template-columns: 1fr; height: auto; gap: 5px; padding: 5px 5px 0 5px; }
   .ed-grid__item { height: 80vw; min-height: 280px; }
   .ed-grid__label { font-size: 1.5rem; bottom: 80px; }
 
   /* Editorial duo — stack vertically on mobile */
-  .ed-duo { grid-template-columns: 1fr; height: auto; gap: 4px; }
+  .ed-duo { grid-template-columns: 1fr; height: auto; gap: 5px; padding: 5px; }
   .ed-duo__item { height: 90vw; min-height: 320px; }
   .ed-duo__content { bottom: 80px; left: 24px; right: 24px; }
   .ed-duo__title { font-size: 1.5rem; }

@@ -241,3 +241,35 @@ function handlePreorder(e) {
     showToast('Pre-order request sent!');
   }, 1400);
 }
+
+/* ── Editorial Carousel ─────────────────────────────────────── */
+(function () {
+  const track   = document.getElementById("carouselTrack");
+  const prevBtn = document.getElementById("carouselPrev");
+  const nextBtn = document.getElementById("carouselNext");
+  if (!track || !prevBtn || !nextBtn) return;
+
+  function scrollAmount() {
+    return track.clientWidth * 0.75;
+  }
+
+  prevBtn.addEventListener("click", function () {
+    track.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+  });
+
+  nextBtn.addEventListener("click", function () {
+    track.scrollBy({ left: scrollAmount(), behavior: "smooth" });
+  });
+
+  // Hide prev/next at scroll limits
+  function updateBtns() {
+    prevBtn.style.opacity = track.scrollLeft <= 0 ? "0.3" : "1";
+    prevBtn.style.pointerEvents = track.scrollLeft <= 0 ? "none" : "auto";
+    const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+    nextBtn.style.opacity = atEnd ? "0.3" : "1";
+    nextBtn.style.pointerEvents = atEnd ? "none" : "auto";
+  }
+
+  track.addEventListener("scroll", updateBtns, { passive: true });
+  updateBtns();
+}());
