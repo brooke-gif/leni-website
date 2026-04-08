@@ -1113,7 +1113,7 @@ body.bar-hidden .nav { top: 0; }
   .shop-grid-4 { grid-template-columns: repeat(2, 1fr); }
   .pdp { grid-template-columns: 1fr; }
   .pdp__gallery { position: static; height: auto; }
-  .pdp__gallery-main { height: 56vw; min-height: 220px; }
+  .pdp__gallery-main { height: 125vw; }
   .pdp__info { padding: 40px 20px; max-height: none; }
   .editorial-split__text { padding: 48px 32px; }
 
